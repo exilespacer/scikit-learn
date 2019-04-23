@@ -561,11 +561,11 @@ class AdaBoostClassifier(BaseWeightBoosting, ClassifierMixin):
 
         return sample_weight, 1., estimator_error
 
-    def _boost_discrete(self, iboost, X, y, sample_weight, random_state, min_detection=None, max_false_positive=None):
+    def _boost_discrete(self, iboost, X, y, sample_weight, random_state):
         """Implement a single boost using the SAMME discrete algorithm."""
         estimator = self._make_estimator(random_state=random_state)
 
-        estimator.fit(X, y, sample_weight=sample_weight, min_detection=min_detection, max_false_positive=max_false_positive)
+        estimator.fit(X, y, sample_weight=sample_weight)
 
         y_predict = estimator.predict(X)
 
