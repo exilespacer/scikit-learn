@@ -157,7 +157,7 @@ class BaseWeightBoosting(BaseEnsemble, metaclass=ABCMeta):
             self.estimator_errors_[iboost] = estimator_error
             
             # Stop if reaching min detection rate and max false positive rate
-            if (min_detection is not None) and (max_false_positive is not None):
+            if min_detection and max_false_positive: 
                 Z = self.predict(X)
                 cmatrix = confusion_matrix(y, Z)
 
